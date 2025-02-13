@@ -1,7 +1,7 @@
 <script>
 import { hash } from 'ohash'
 import { toRefs, defineComponent, h, useSlots, watch } from 'vue'
-import { computed, useAsyncData, queryContent } from '#imports'
+import { computed, useAsyncData, queryCollection } from '#imports'
 
 export default defineComponent({
   name: 'CustomQuery',
@@ -98,10 +98,10 @@ export default defineComponent({
       () => {
         let queryBuilder
         if (path.value) {
-          queryBuilder = queryContent(path.value)
+          queryBuilder = queryCollection(path.value)
         }
         else {
-          queryBuilder = queryContent()
+          queryBuilder = queryCollection()
         }
         if (only.value) {
           queryBuilder = queryBuilder.only(only.value)
